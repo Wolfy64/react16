@@ -19,7 +19,7 @@ const cockpit = props => {
 
   return (
     <div>
-      <h1>Hi, I'm a React App</h1>
+      <h1>{props.appTitle}</h1>
       <p className={classes.join(" ")}>This is really working !</p>
       <button
         className={btnClasse}
@@ -31,4 +31,3 @@ const cockpit = props => {
 };
 
 export default cockpit;
-// style.backgroundColor = 'red';
