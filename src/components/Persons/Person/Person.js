@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
-import './Person.css';
-import Aux from '../../../hoc/Aux';
-import withClass from '../../../hoc/withClass';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import "./Person.css";
+import Aux from "../../../hoc/Aux";
+import withClass from "../../../hoc/withClass";
+import PropTypes from "prop-types";
+import { Context, AuthContext } from "../../../containers/App";
 
-class Person extends Component{
+class Person extends Component {
   constructor(props) {
     super(props);
-    console.log('[Person.js Inside Constructor]', props)
+    console.log("[Person.js Inside Constructor]", props);
     this.inputElement = React.createRef();
   }
 
   componentWillMount() {
-    console.log('[Person.js Inside componentWillMount]');
+    console.log("[Person.js Inside componentWillMount]");
   }
 
   componentDidMount() {
-    console.log('[Person.js Inside componentDidMount]');
+    console.log("[Person.js Inside componentDidMount]");
     if (this.props.position === 0) {
       this.inputElement.current.focus();
     }
@@ -27,19 +28,25 @@ class Person extends Component{
   }
 
   render() {
-    console.log('[Person.js Inside render()]');
+    console.log("[Person.js Inside render()]");
 
     return (
       <Aux>
-        <p onClick={this.props.clicked}>I'm {this.props.name} and I am {this.props.age} years old</p>
+        <AuthContext.Consumer>
+          {auth => (auth ? <p>I'm Authenticated</p> : null)}
+        </AuthContext.Consumer>
+        <p onClick={this.props.clicked}>
+          I'm {this.props.name} and I am {this.props.age} years old
+        </p>
         <p>{this.props.children}</p>
         <input
-          ref= {this.inputElement}
+          ref={this.inputElement}
           type="text"
           onChange={this.props.changed}
-          value={this.props.name} />
+          value={this.props.name}
+        />
       </Aux>
-    )
+    );
   }
 }
 
@@ -50,5 +57,5 @@ Person.propTypes = {
   changed: PropTypes.func
 };
 
-export default withClass(Person, 'Person');
+export default withClass(Person, "Person");
 // export default Person;

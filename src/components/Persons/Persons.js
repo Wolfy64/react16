@@ -40,8 +40,6 @@ class Persons extends PureComponent {
     console.log('[UPDATE Persons.js] inside componentDidlUpdate', nextProps, nextState);
   }
 
-  compo
-
   render() {
     console.log("[Persons.js Inside render()]");
 
@@ -52,7 +50,7 @@ class Persons extends PureComponent {
           name={person.name}
           position={index}
           age={person.age}
-          ref = {this.lastPersonRef}
+          ref={this.lastPersonRef}
           key={person.id}
           changed={event => this.props.changed(event, person.id)}
         />
