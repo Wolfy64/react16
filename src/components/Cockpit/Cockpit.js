@@ -1,5 +1,6 @@
 import React from "react";
-import './Cockpit.css'
+import './Cockpit.css';
+import Aux from '../../hoc/Aux';
 
 
 const cockpit = props => {
@@ -18,7 +19,7 @@ const cockpit = props => {
   }
 
   return (
-    <div>
+    <Aux>
       <h1>{props.appTitle}</h1>
       <p className={classes.join(" ")}>This is really working !</p>
       <button
@@ -26,7 +27,7 @@ const cockpit = props => {
         onClick={props.clicked}>
         Toggle Persons
       </button>
-    </div>
+    </Aux>
   );
 };
 
