@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Person from "./Person/Person";
 
-class Persons extends Component {
+class Persons extends PureComponent {
   constructor(props) {
     super(props);
     console.log("[Persons.js Inside Constructor]", props);
@@ -22,10 +22,13 @@ class Persons extends Component {
     );
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('[UPDATE Persons.js Inside shouldComponentUpdate]', nextProps, nextState);
-    return nextProps.Persons !== this.props.persons;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('[UPDATE Persons.js Inside shouldComponentUpdate]', nextProps, nextState);
+  //   return nextProps.Persons !== this.props.persons ||
+  //     nextProps.changed !== this.props.changed ||
+  //     nextProps.clicked !== this.props.clicked;
+  //   // return true;
+  // }
 
   componentWillUpdate() {
     console.log('[UPDATE Persons.js] inside componentWillUpdate');
@@ -43,7 +46,7 @@ class Persons extends Component {
     return this.props.persons.map((person, index) => {
       return (
         <Person
-          click={() => this.props.clicked(index)}
+          clicked={() => this.props.clicked(index)}
           name={person.name}
           age={person.age}
           key={person.id}
